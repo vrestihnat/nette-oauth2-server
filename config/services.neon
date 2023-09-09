@@ -1,0 +1,23 @@
+extensions:
+	console: Contributte\Console\DI\ConsoleExtension(%consoleMode%)
+	events: Kdyby\Events\DI\EventsExtension
+	annotations: Kdyby\Annotations\DI\AnnotationsExtension
+	doctrine: Kdyby\Doctrine\DI\OrmExtension
+
+
+search:
+	-
+		in: %appDir%
+		classes:
+			- *Factory
+			- *Facade
+
+
+services:
+	- App\Router\RouterFactory::createRouter
+
+doctrine:
+	driver: pdo_mysql
+
+	metadata:
+		App: %appDir%
